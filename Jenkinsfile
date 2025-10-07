@@ -13,12 +13,11 @@ pipeline {
         string(name: 'TENANT', defaultValue: 'tenant1', description: 'Tenant name')
     }
 
-    stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/yourusername/multi-tenant-dashboard.git'
-            }
-        }
+   stage('Checkout') {
+    steps {
+        git credentialsId: 'github-creds', url: 'https://github.com/souravl13/Multi-tenant-dashboards.git', branch: 'main'
+    }
+}
 
         stage('Build Docker Image') {
             steps {
